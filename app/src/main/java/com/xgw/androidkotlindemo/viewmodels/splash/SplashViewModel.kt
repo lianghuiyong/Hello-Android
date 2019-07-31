@@ -1,10 +1,16 @@
 package com.xgw.androidkotlindemo.viewmodels.splash
+
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.xgw.androidkotlindemo.base.BaseViewModel
-import kotlinx.coroutines.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
+/**
+ *  @author: XieGuangwei
+ *  @description: 启动页ViewModel，暂时处理一个计时器
+ *  @date: 2019/7/16 20:16
+ */
 class SplashViewModel : BaseViewModel<Any>() {
     val delayTask = MutableLiveData<Int>()
 

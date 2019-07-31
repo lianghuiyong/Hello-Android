@@ -13,7 +13,7 @@ import java.net.UnknownHostException
 
 /**
  *  @author: XieGuangwei
- *  @description:
+ *  @description: viewmodel基类，统一处理网络请求状态变化、网络请求错误处理
  *  @date: 2019/7/18 14:18
  */
 abstract class BaseViewModel<T> : ViewModel() {

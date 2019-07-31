@@ -28,4 +28,6 @@ class MainRepository private constructor(
     fun getLatestExpireCookie() = cookieDao.getLatestExpireCookie()
 
     suspend fun getBanners() = NetworkApi.create().getBanner()
+
+    suspend fun getWxAuthors() = NetworkApi.create().getWxAuthors()
 }

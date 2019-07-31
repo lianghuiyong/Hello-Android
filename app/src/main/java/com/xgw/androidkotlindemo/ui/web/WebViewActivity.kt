@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.toolbar_layout.*
 
 /**
  *  @author: XieGuangwei
- *  @description:
+ *  @description: webView页面
  *  @date: 2019/7/31 11:38
  */
 class WebViewActivity : BaseActivity() {

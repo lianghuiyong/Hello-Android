@@ -7,12 +7,15 @@ import com.xgw.androidkotlindemo.data.ProfileRepository
 
 /**
  *  @author: XieGuangwei
- *  @description:
+ *  @description: 主页ViewModel生产工厂
  *  @date: 2019/7/19 18:17
  */
-class MainViewModelFactory(private val mainRepository: MainRepository, private val profileRepository: ProfileRepository) :
+class MainViewModelFactory(
+    private val mainRepository: MainRepository,
+    private val profileRepository: ProfileRepository
+) :
     ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return MainViewModel(mainRepository,profileRepository) as T
+        return MainViewModel(mainRepository, profileRepository) as T
     }
 }

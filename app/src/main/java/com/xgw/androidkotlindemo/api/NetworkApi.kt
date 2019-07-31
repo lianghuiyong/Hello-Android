@@ -5,6 +5,8 @@ import com.xgw.androidkotlindemo.app.App
 import com.xgw.androidkotlindemo.base.BaseResponse
 import com.xgw.androidkotlindemo.bean.response.BannerResponse
 import com.xgw.androidkotlindemo.bean.response.ProfileResponse
+import com.xgw.androidkotlindemo.bean.response.WxArticleResponse
+import com.xgw.androidkotlindemo.bean.response.WxAuthorResponse
 import com.xgw.androidkotlindemo.data.AppDatabase
 import okhttp3.Cookie
 import okhttp3.CookieJar
@@ -13,10 +15,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 import java.util.concurrent.TimeUnit
 
 /**
@@ -127,5 +126,17 @@ interface NetworkApi {
      * 获取banner
      */
     @GET("/banner/json")
-    suspend fun getBanner() : BaseResponse<List<BannerResponse>>?
+    suspend fun getBanner(): BaseResponse<List<BannerResponse>>?
+
+    /**
+     * 获取微信公众号作者列表
+     */
+    @GET("/wxarticle/chapters/json")
+    suspend fun getWxAuthors(): BaseResponse<List<WxAuthorResponse>>?
+
+    /**
+     * 获取某个微信公众号下的文章列表
+     */
+    @GET("/wxartical/list/{pageNo}/{wxid}/json")
+    suspend fun getWxArticales(@Path("pageNo") pageNo: Int, @Path("wxid") wxid: String): BaseResponse<List<WxArticleResponse>>?
 }

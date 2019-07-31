@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.xgw.androidkotlindemo.R
+import com.xgw.androidkotlindemo.adapter.WxAuthorAdapter
+import com.xgw.androidkotlindemo.api.RequestState
 import com.xgw.androidkotlindemo.base.BaseFragment
 import com.xgw.androidkotlindemo.bean.response.BannerResponse
 import com.xgw.androidkotlindemo.ui.web.WebViewActivity
@@ -14,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 
 /**
  *  @author: XieGuangwei
- *  @description:
+ *  @description: 主页主体内容
  *  @date: 2019/7/31 10:21
  */
 class MainFragment : BaseFragment() {
@@ -22,6 +24,7 @@ class MainFragment : BaseFragment() {
     private val viewModel by viewModels<MainViewModel> {
         InjectorUtils.provideMainViewModelFactory(requireContext())
     }
+    private lateinit var adapter: WxAuthorAdapter
 
     override fun getLayoutId() = R.layout.fragment_main
 
@@ -44,5 +47,21 @@ class MainFragment : BaseFragment() {
             args.putString("url", url)
             nextActivity(WebViewActivity::class.java, args)
         }
+
+        adapter = WxAuthorAdapter({
+            adapter.setNetworkState(RequestState.LOADING)
+            viewModel.getBanner()
+        }) {
+            adapter.setNetworkState(RequestState.SUCCESS)
+        }
+        recyclerView.adapter = adapter
+        viewModel.wxResponses.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+        })
+        viewModel.requestState.observe(viewLifecycleOwner, Observer {
+            adapter.setNetworkState(it)
+        })
+
+        viewModel.getWxAuthors()
     }
 }

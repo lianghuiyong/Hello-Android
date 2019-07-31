@@ -1,7 +1,6 @@
 package com.xgw.androidkotlindemo.viewmodels.profile
 
 import android.text.TextUtils
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.xgw.androidkotlindemo.api.RequestState
 import com.xgw.androidkotlindemo.base.BaseViewModel
@@ -12,7 +11,7 @@ import com.xgw.androidkotlindemo.data.User
 
 /**
  *  @author: XieGuangwei
- *  @description:
+ *  @description: 身份填写（登录、注册）ViewModel
  *  @date: 2019/7/16 20:12
  */
 class ProfileViewModel internal constructor(private val profileRepository: ProfileRepository) :
