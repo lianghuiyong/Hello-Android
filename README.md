@@ -1,0 +1,1 @@
+wanandroid api构建的一个demo项目，使用了jetpack相关组件（lifecycles、livedata、paging、room、viewmodel），使用了kotlin语言，使用kotlin协程（coroutine）构建任务，使用了ktx扩展库，使用了androidx sdk

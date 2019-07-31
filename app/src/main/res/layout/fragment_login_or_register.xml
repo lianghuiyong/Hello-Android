@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:background="@drawable/window_background">
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/account_til"
+            style="@style/TextInputStyle"
+            android:hint="@string/enter_account_hint"
+            app:endIconMode="clear_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/account_tiet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:lines="1"
+                android:background="@null"
+                android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:inputType="textEmailAddress"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_til"
+            style="@style/TextInputStyle"
+            android:hint="@string/enter_password_hint"
+            app:layout_constraintLeft_toLeftOf="@id/account_til"
+            app:layout_constraintTop_toBottomOf="@id/account_til"
+            app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_tiet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:lines="1"
+                android:background="@null"
+                android:inputType="textPassword"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_confirm_til"
+            style="@style/TextInputStyle"
+            android:hint="@string/enter_confirm_password_hint"
+            app:layout_constraintLeft_toLeftOf="@id/password_til"
+            app:layout_constraintTop_toBottomOf="@id/password_til"
+            app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_confirm_tiet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:lines="1"
+                android:inputType="textPassword"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/login_btn"
+            android:layout_width="220dp"
+            android:layout_height="65dp"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/green_300"
+            android:text="登录"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            app:cornerRadius="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password_confirm_til"
+            app:rippleColor="@color/green_100"
+            app:strokeWidth="1dp"/>
+
+    <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="@id/login_btn"
+            app:layout_constraintLeft_toLeftOf="@id/login_btn"
+            app:layout_constraintTop_toTopOf="@id/login_btn"
+            app:layout_constraintRight_toRightOf="@id/login_btn"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
