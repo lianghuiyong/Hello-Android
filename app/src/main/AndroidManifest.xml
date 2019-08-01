@@ -41,6 +41,7 @@
                 android:screenOrientation="portrait"/>
         <activity
                 android:configChanges="orientation|screenSize|keyboardHidden"
+                android:windowSoftInputMode="stateHidden|adjustResize"
                 android:name=".ui.web.WebViewActivity"/>
     </application>
 

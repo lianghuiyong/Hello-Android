@@ -58,6 +58,10 @@ class BaseWebView : WebView {
         setCookiesEnabled(true)
     }
 
+    fun shouldOverrideUrlLoading(view: WebView?, jumpUrl: String?): Boolean {
+        return false
+    }
+
     private fun setCache(settings: WebSettings) {
         settings.cacheMode = WebSettings.LOAD_NO_CACHE//默认的缓存使用模式。在进行页面前进或后退的操作时，如果缓存可用并未过期就优先加载缓存，否则从网络上加载数据。这样可以减少页面的网络请求次数
         settings.domStorageEnabled = true //Dom Storage

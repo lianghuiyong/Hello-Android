@@ -8,6 +8,17 @@
 
     <include layout="@layout/toolbar_layout" />
 
+    <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:maxHeight="2dp"
+            app:layout_anchor="@id/appBarLayout"
+            android:minHeight="2dp"
+            android:progressDrawable="@drawable/base_web_explorer_progress"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
     <com.xgw.common.widget.BaseWebView
             android:id="@+id/webView"
             android:layout_width="match_parent"
