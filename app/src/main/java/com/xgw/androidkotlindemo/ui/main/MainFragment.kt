@@ -40,11 +40,9 @@ class MainFragment : BaseFragment() {
         })
         viewModel.getBanner()
         banner.setOnBannerListener {
-            val title = banners[it].title
-            val url = banners[it].url
             val args = Bundle()
-            args.putString("title", title)
-            args.putString("url", url)
+            args.putString("title", banners[it].title)
+            args.putString("url", banners[it].url)
             nextActivity(WebViewActivity::class.java, args)
         }
 

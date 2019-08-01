@@ -1,9 +1,5 @@
 package com.xgw.androidkotlindemo.ui.web
 
-import android.util.Log
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import com.xgw.androidkotlindemo.R
 import com.xgw.androidkotlindemo.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_web_view.*
@@ -26,23 +22,6 @@ class WebViewActivity : BaseActivity() {
             setDisplayShowTitleEnabled(false)
         }
         toolbar.title = intent.getStringExtra("title")
-        val webSettings = webView.settings
-        //支持缩放，默认为true。
-        webSettings.setSupportZoom(false)
-        //调整图片至适合webview的大小
-        webSettings.useWideViewPort = true
-        // 缩放至屏幕的大小
-        webSettings.loadWithOverviewMode = true
-        //设置默认编码
-        webSettings.defaultTextEncodingName = "utf-8"
-        //设置自动加载图片
-        webSettings.loadsImagesAutomatically = true
-        webView.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-                Log.e("xgw", view?.url)
-                return false
-            }
-        }
         webView.loadUrl(intent.getStringExtra("url"))
     }
 
@@ -50,22 +29,17 @@ class WebViewActivity : BaseActivity() {
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        webView.destroy()
-    }
-
-
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
     }
 
     override fun onBackPressed() {
-        if (webView.canGoBack()) {
-            webView.goBack()
-        } else {
-            super.onBackPressed()
-        }
+        webView.onBackPressed(this)
+    }
+
+    override fun onDestroy() {
+        webView.onDestroy()
+        super.onDestroy()
     }
 }

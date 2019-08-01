@@ -42,6 +42,16 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+    //登录回调
+    fun onLogin(){
+
+    }
+
+    //登出回调
+    fun onLoginOut(){
+
+    }
+
     protected fun showSnackBar(view: View, msg: String) {
         Snackbar.make(view, msg, Snackbar.LENGTH_SHORT).show()
     }
