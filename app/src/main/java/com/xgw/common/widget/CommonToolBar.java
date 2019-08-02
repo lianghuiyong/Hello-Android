@@ -1,6 +1,5 @@
 package com.xgw.common.widget;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
@@ -60,7 +59,7 @@ public class CommonToolBar extends FrameLayout {
 
         typedArray.recycle();
 
-        layoutView = LayoutInflater.from(context).inflate(R.layout.module_common_toolbar, this);
+        layoutView = LayoutInflater.from(context).inflate(R.layout.common_toolbar, this);
 
         layoutBack = layoutView.findViewById(R.id.layout_back);
         imageBack = layoutView.findViewById(R.id.toolbar_image_back);

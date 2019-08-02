@@ -28,7 +28,7 @@ public class CommonStatusBar extends FrameLayout {
     }
 
     public void initCustomAttrs(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
-        View layoutView = LayoutInflater.from(context).inflate(R.layout.module_common_status_bar_layout, this);
+        View layoutView = LayoutInflater.from(context).inflate(R.layout.common_status_bar, this);
 
         if (layoutView.isInEditMode()) {
             return;
