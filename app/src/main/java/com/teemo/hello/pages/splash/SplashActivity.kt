@@ -2,19 +2,23 @@ package com.teemo.hello.pages.splash
 
 import android.Manifest
 import android.animation.ObjectAnimator
-import android.util.Log
 import android.view.View
+import android.view.animation.AlphaAnimation
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
-import com.teemo.hello.R
+import androidx.viewpager2.widget.ViewPager2
 import com.teemo.common.base.BaseActivity
+import com.teemo.hello.R
 import com.teemo.hello.pages.main.MainActivity
+import com.teemo.hello.pages.splash.adapter.SplashAdapter
 import com.teemo.hello.utils.InjectorUtils
 import com.teemo.hello.viewmodels.splash.SplashViewModel
 import kotlinx.android.synthetic.main.activity_splash.*
 import kotlinx.coroutines.cancel
-import permissions.dispatcher.*
+import permissions.dispatcher.NeedsPermission
+import permissions.dispatcher.OnPermissionDenied
+import permissions.dispatcher.RuntimePermissions
 
 /**
  * @author: XieGuangwei
@@ -29,20 +33,6 @@ class SplashActivity : BaseActivity() {
     }
 
     override fun getLayoutId() = R.layout.activity_splash
-
-    override fun initView() {
-        skip_btn.setOnClickListener {
-            skip()
-        }
-        delayViewModel.delayTask.observe(this, Observer {
-            skip_btn.text = "跳过$it"
-            if (it == 3) {
-                skip_btn.visibility = View.VISIBLE
-            } else if (it == 0) {
-                showWRWithPermissionCheck()
-            }
-        })
-    }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -59,7 +49,46 @@ class SplashActivity : BaseActivity() {
         skip()
     }
 
+    override fun initView() {
+        skip_btn.setOnClickListener {
+            skip()
+        }
+        delayViewModel.delayTask.observe(this, Observer {
+            skip_btn.text = "跳过$it"
+            if (it == 3) {
+                skip_btn.visibility = View.VISIBLE
+            } else if (it == 0) {
+                showWRWithPermissionCheck()
+            }
+        })
+    }
+
     override fun initData() {
+        home_view_pager.apply {
+            val mAdapter = SplashAdapter()
+            val list = ArrayList<Int>()
+            list.add(R.drawable.app_splash_1)
+            list.add(R.drawable.app_splash_2)
+            list.add(R.drawable.app_splash_3)
+            mAdapter.setNewData(list)
+            adapter = mAdapter
+            offscreenPageLimit = 1
+
+            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+                override fun onPageSelected(position: Int) {
+                    if (position == list.size -1){
+                        startAnim()
+                    }
+                }
+            })
+        }
+
+        val animation = AlphaAnimation(0.3f, 1.0f)
+        animation.duration = 1000
+        home_view_pager.startAnimation(animation)
+    }
+
+    private fun startAnim(){
         delayViewModel.startDelay()
 
         bottom_layout.post {
@@ -72,5 +101,10 @@ class SplashActivity : BaseActivity() {
         delayViewModel.viewModelScope.cancel()
         nextActivity(MainActivity::class.java)
         finish()
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(0, R.anim.fade_out)
     }
 }
