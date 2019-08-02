@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -13,6 +14,11 @@ import com.google.android.material.snackbar.Snackbar
  * @date: 2019/07/06
  */
 abstract class BaseActivity : AppCompatActivity() {
+    init {
+        //兼容svg
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())

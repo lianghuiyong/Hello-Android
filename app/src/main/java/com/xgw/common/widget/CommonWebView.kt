@@ -13,7 +13,7 @@ import com.tencent.smtt.sdk.CookieManager
 import com.tencent.smtt.sdk.WebSettings
 import com.tencent.smtt.sdk.WebView
 
-class BaseWebView : WebView {
+class CommonWebView : WebView {
     constructor(context: Context) : super(context) {
         initSetting()
     }
@@ -84,7 +84,7 @@ class BaseWebView : WebView {
     }
 
     override fun loadUrl(url: String?) {
-        Log.e("BaseWebView",url)
+        Log.e("CommonWebView",url)
         super.loadUrl(url)
     }
 

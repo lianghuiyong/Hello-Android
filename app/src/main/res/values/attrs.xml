@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--共用toolbar-->
+    <declare-styleable name="CommonToolBar">
+        <attr name="back_content" format="string" />
+        <attr name="btn_back_color" format="color" />
+        <attr name="title_size" format="dimension" />
+        <attr name="title_content" format="string" />
+        <attr name="title_color" format="color" />
+        <attr name="more_size" format="dimension" />
+        <attr name="more_content" format="string" />
+        <attr name="more_color" format="color" />
+        <attr name="more_image" format="reference" />
+        <attr name="show_left_back" format="boolean" />
+    </declare-styleable>
+
+</resources>

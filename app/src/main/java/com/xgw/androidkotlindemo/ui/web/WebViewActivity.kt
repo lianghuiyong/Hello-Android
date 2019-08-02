@@ -12,12 +12,12 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import com.tencent.smtt.export.external.interfaces.WebResourceError
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest
+import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebView
 import com.tencent.smtt.sdk.WebViewClient
 import com.xgw.androidkotlindemo.R
 import com.xgw.androidkotlindemo.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_web_view.*
-import kotlinx.android.synthetic.main.toolbar_layout.*
 
 /**
  *  @author: XieGuangwei
@@ -28,17 +28,9 @@ class WebViewActivity : BaseActivity() {
     override fun getLayoutId() = R.layout.activity_web_view
 
     override fun initView() {
-        setSupportActionBar(toolbar)
-        //toolbar
-        supportActionBar?.run {
-            setDisplayHomeAsUpEnabled(true)
-            setHomeButtonEnabled(true)
-            setDisplayShowTitleEnabled(false)
-        }
-        toolbar.title = intent.getStringExtra("title")
+        tool_bar.addOnBackListener { onBackPressed() }
         webView.loadUrl(intent.getStringExtra("url"))
     }
-
 
     private var mProgressHandler: ProgressHandler? = null
     private fun sendProgressMessage(progressType: Int, newProgress: Int, duration: Int) {
@@ -102,8 +94,23 @@ class WebViewActivity : BaseActivity() {
         }
     }
     override fun initData() {
-        val webViewClient = object : WebViewClient() {
+        mProgressHandler = ProgressHandler()
+        val mChromeClient = object : WebChromeClient() {
+            override fun onProgressChanged(p0: WebView?, newProgress: Int) {
+                // 修改进度条
+                if (newProgress > mProgressHandler?.mDstProgressIndex!!) {
+                    sendProgressMessage(PROGRESS_PROCESS, newProgress, 100)
+                }
+            }
 
+            //获取页面标题
+            override fun onReceivedTitle(p0: WebView?, title: String?) {
+                super.onReceivedTitle(p0, title)
+                tool_bar.title = title
+            }
+        }
+
+        val mWebViewClient = object : WebViewClient() {
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
                 //进度条
@@ -138,6 +145,11 @@ class WebViewActivity : BaseActivity() {
 //                toolbar.titleContent = "无网络连接"
 //                empty_layout.showNetWorkError("没有网络连接", View.OnClickListener { view?.reload() })
             }
+        }
+
+        webView.apply {
+            webViewClient = mWebViewClient
+            webChromeClient = mChromeClient
         }
     }
 

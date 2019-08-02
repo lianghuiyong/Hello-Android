@@ -4,7 +4,6 @@ import android.Manifest
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.xgw.androidkotlindemo.R
