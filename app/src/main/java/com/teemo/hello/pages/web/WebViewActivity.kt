@@ -1,22 +1,17 @@
 package com.teemo.hello.pages.web
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
 import android.annotation.TargetApi
 import android.graphics.Bitmap
 import android.os.Build
-import android.os.Handler
-import android.os.Message
-import android.view.View
 import androidx.annotation.RequiresApi
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper
+import com.teemo.common.base.BaseActivity
+import com.teemo.hello.R
 import com.tencent.smtt.export.external.interfaces.WebResourceError
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest
 import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebView
 import com.tencent.smtt.sdk.WebViewClient
-import com.teemo.hello.R
-import com.teemo.common.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_web_view.*
 
 /**
@@ -28,79 +23,16 @@ class WebViewActivity : BaseActivity() {
     override fun getLayoutId() = R.layout.activity_web_view
 
     override fun initView() {
+        QMUIStatusBarHelper.setStatusBarLightMode(this)
         tool_bar.addOnBackListener { onBackPressed() }
         webView.loadUrl(intent.getStringExtra("url"))
     }
 
-    private var mProgressHandler: ProgressHandler? = null
-    private fun sendProgressMessage(progressType: Int, newProgress: Int, duration: Int) {
-        val msg = Message()
-        msg.what = progressType
-        msg.arg1 = newProgress
-        msg.arg2 = duration
-        when (progressType) {
-            PROGRESS_PROCESS ->
-                mProgressHandler?.sendMessage(msg)
-
-            PROGRESS_GONE ->
-                mProgressHandler?.sendMessageDelayed(msg, 1000)
-        }
-    }
-
-    private val PROGRESS_PROCESS = 0
-    private val PROGRESS_GONE = 1
-    private inner class ProgressHandler : Handler() {
-
-        var mDstProgressIndex: Int = 0
-        private var mDuration: Int = 0
-        private var mAnimator: ObjectAnimator? = null
-
-
-        override fun handleMessage(msg: Message) {
-            when (msg.what) {
-                PROGRESS_PROCESS -> {
-                    mDstProgressIndex = msg.arg1
-                    mDuration = msg.arg2
-                    progress_bar?.visibility = View.VISIBLE
-                    if (mAnimator != null && mAnimator!!.isRunning) {
-                        mAnimator!!.cancel()
-                    }
-                    mAnimator = ObjectAnimator.ofInt(progress_bar, "progress", mDstProgressIndex)
-                    mAnimator?.duration = mDuration.toLong()
-                    mAnimator?.addListener(object : AnimatorListenerAdapter() {
-                        override fun onAnimationEnd(animation: Animator) {
-                            if (progress_bar.progress == 100) {
-                                sendEmptyMessageDelayed(PROGRESS_GONE, 500)
-                            }
-                        }
-                    })
-                    mAnimator?.start()
-                }
-                PROGRESS_GONE -> {
-                    mDstProgressIndex = 0
-                    mDuration = 0
-                    progress_bar?.progress = 0
-                    progress_bar.visibility = View.GONE
-                    if (mAnimator != null && mAnimator!!.isRunning) {
-                        mAnimator!!.cancel()
-                    }
-                    mAnimator = ObjectAnimator.ofInt(progress_bar, "progress", 0)
-                    mAnimator?.duration = 0
-                    mAnimator?.removeAllListeners()
-                }
-                else -> {
-                }
-            }
-        }
-    }
     override fun initData() {
-        mProgressHandler = ProgressHandler()
         val mChromeClient = object : WebChromeClient() {
             override fun onProgressChanged(p0: WebView?, newProgress: Int) {
                 // 修改进度条
-                if (newProgress > mProgressHandler?.mDstProgressIndex!!) {
-                    sendProgressMessage(PROGRESS_PROCESS, newProgress, 100)
-                }
+                progress_bar.upProgress(newProgress)
             }
 
             //获取页面标题
@@ -114,15 +46,13 @@ class WebViewActivity : BaseActivity() {
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
                 //进度条
-                if (mProgressHandler?.mDstProgressIndex == 0) {
-                    sendProgressMessage(PROGRESS_PROCESS, 30, 500)
-                }
+                progress_bar.upProgress(30)
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 //进度条
-                sendProgressMessage(PROGRESS_GONE, 100, 0)
+                progress_bar.upProgress(100)
             }
 
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)

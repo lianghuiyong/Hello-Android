@@ -33,7 +33,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
         //沉浸式
         QMUIStatusBarHelper.translucent(this)
-        QMUIStatusBarHelper.setStatusBarLightMode(this)
+        QMUIStatusBarHelper.setStatusBarDarkMode(this)
 
         initView()
         initData()

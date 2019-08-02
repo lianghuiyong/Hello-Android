@@ -1,6 +1,7 @@
 package com.teemo.hello.pages.splash
 
 import android.Manifest
+import android.animation.ObjectAnimator
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
@@ -23,7 +24,6 @@ import permissions.dispatcher.*
 
 @RuntimePermissions
 class SplashActivity : BaseActivity() {
-    private val TAG = "SplashActivity"
     private val delayViewModel by viewModels<SplashViewModel> {
         InjectorUtils.provideSplashViewModelFactory()
     }
@@ -35,12 +35,9 @@ class SplashActivity : BaseActivity() {
             skip()
         }
         delayViewModel.delayTask.observe(this, Observer {
-            Log.e(TAG, "执行操作：$it")
-            skip_btn.text = "点我跳过${it}秒"
+            skip_btn.text = "跳过$it"
             if (it == 3) {
-                with(skip_btn) {
-                    visibility = View.VISIBLE
-                }
+                skip_btn.visibility = View.VISIBLE
             } else if (it == 0) {
                 showWRWithPermissionCheck()
             }
@@ -49,7 +46,6 @@ class SplashActivity : BaseActivity() {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        // NOTE: delegate the permission handling to generated function
         onRequestPermissionsResult(requestCode, grantResults)
     }
 
@@ -58,8 +54,18 @@ class SplashActivity : BaseActivity() {
         skip()
     }
 
+    @OnPermissionDenied(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    fun onWRDenied() {
+        skip()
+    }
+
     override fun initData() {
         delayViewModel.startDelay()
+
+        bottom_layout.post {
+            val viewAnim = ObjectAnimator.ofFloat(bottom_layout, "translationY", bottom_layout.height.toFloat(), 0f)
+            viewAnim.start()
+        }
     }
 
     private fun skip() {

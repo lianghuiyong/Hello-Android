@@ -20,7 +20,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_height="0dp"/>
 
-    <ProgressBar
+    <com.teemo.common.widget.CommonWebProgress
         android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"

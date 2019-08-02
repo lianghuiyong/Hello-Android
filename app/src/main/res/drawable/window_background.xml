@@ -1,10 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-       android:shape="rectangle">
-    <gradient
-            android:angle="135"
-            android:centerColor="#009688"
-            android:endColor="#00695C"
-            android:startColor="#4DB6AC"
-            android:type="linear"/>
-</shape>
+<?xml version="1.0" encoding="utf-8"?><!-- Modify this file to customize your launch splash screen -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:gravity="fill">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/white"/>
+        </shape>
+    </item>
+    <item android:bottom="0dp">
+        <bitmap
+                android:gravity="fill_horizontal|bottom"
+                android:src="@drawable/app_splash_back"/>
+    </item>
+</layer-list>
