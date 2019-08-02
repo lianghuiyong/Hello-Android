@@ -74,27 +74,25 @@ class SplashActivity : BaseActivity() {
             adapter = mAdapter
             offscreenPageLimit = 1
 
-            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
-                    if (position == list.size -1){
+                    if (position == list.size - 1) {
                         startAnim()
                     }
                 }
             })
         }
 
-        val animation = AlphaAnimation(0.3f, 1.0f)
-        animation.duration = 1000
-        home_view_pager.startAnimation(animation)
+        val viewAnim = ObjectAnimator.ofFloat(home_view_pager, "alpha", 0.3f, 1f)
+        viewAnim.startDelay = 300
+        viewAnim.start()
     }
 
-    private fun startAnim(){
+    private fun startAnim() {
         delayViewModel.startDelay()
 
-        bottom_layout.post {
-            val viewAnim = ObjectAnimator.ofFloat(bottom_layout, "translationY", bottom_layout.height.toFloat(), 0f)
-            viewAnim.start()
-        }
+        val viewAnim = ObjectAnimator.ofFloat(bottom_layout, "translationY", bottom_layout.height.toFloat(), 0f)
+        viewAnim.start()
     }
 
     private fun skip() {
