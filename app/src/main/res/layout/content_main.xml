@@ -13,6 +13,6 @@
             android:id="@+id/mainFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="com.xgw.androidkotlindemo.ui.main.MainFragment"/>
+            android:name="com.teemo.hello.ui.main.MainFragment"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

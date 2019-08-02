@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.xgw.androidkotlindemo">
+          xmlns:tools="http://schemas.android.com/tools" package="com.teemo.hello">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -10,7 +10,7 @@
 
 
     <application
-            android:name=".app.App"
+            android:name="com.teemo.hello.app.App"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -21,7 +21,7 @@
             tools:ignore="GoogleAppIndexingWarning">
         <!--启动页-->
         <activity
-                android:name=".ui.splash.SplashActivity"
+                android:name="com.teemo.hello.ui.splash.SplashActivity"
                 android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.FullScreen.SplashTheme">
             <intent-filter>
@@ -32,17 +32,17 @@
         </activity>
         <!--首页-->
         <activity
-                android:name=".ui.main.MainActivity"
+                android:name="com.teemo.hello.ui.main.MainActivity"
                 android:label="@string/app_name"
                 android:screenOrientation="portrait"/>
         <!--登录/注册页-->
         <activity
-                android:name=".ui.profile.ProfileActivity"
+                android:name="com.teemo.hello.ui.profile.ProfileActivity"
                 android:screenOrientation="portrait"/>
         <activity
                 android:configChanges="orientation|screenSize|keyboardHidden"
                 android:windowSoftInputMode="stateHidden|adjustResize"
-                android:name=".ui.web.WebViewActivity"/>
+                android:name="com.teemo.hello.ui.web.WebViewActivity"/>
     </application>
 
 </manifest>
