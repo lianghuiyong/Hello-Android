@@ -1,8 +1,8 @@
 package com.teemo.hello.api
 
 import android.util.Log
-import com.teemo.hello.app.App
-import com.teemo.hello.base.BaseResponse
+import com.teemo.hello.App
+import com.teemo.common.base.BaseResponse
 import com.teemo.hello.bean.response.BannerResponse
 import com.teemo.hello.bean.response.ProfileResponse
 import com.teemo.hello.bean.response.WxArticleResponse

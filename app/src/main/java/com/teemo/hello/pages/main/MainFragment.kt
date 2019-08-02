@@ -1,4 +1,4 @@
-package com.teemo.hello.ui.main
+package com.teemo.hello.pages.main
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
@@ -6,9 +6,9 @@ import androidx.lifecycle.Observer
 import com.teemo.hello.R
 import com.teemo.hello.adapter.WxAuthorAdapter
 import com.teemo.hello.api.RequestState
-import com.teemo.hello.base.BaseFragment
+import com.teemo.common.base.BaseFragment
 import com.teemo.hello.bean.response.BannerResponse
-import com.teemo.hello.ui.web.WebViewActivity
+import com.teemo.hello.pages.web.WebViewActivity
 import com.teemo.hello.utils.InjectorUtils
 import com.teemo.hello.viewmodels.main.MainViewModel
 import com.teemo.hello.widget.banner.BannerImageLoader

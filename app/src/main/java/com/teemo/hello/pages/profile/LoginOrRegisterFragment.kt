@@ -1,4 +1,4 @@
-package com.teemo.hello.ui.profile
+package com.teemo.hello.pages.profile
 
 import android.os.Bundle
 import android.view.View
@@ -6,10 +6,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.teemo.hello.R
 import com.teemo.hello.api.RequestState
-import com.teemo.hello.base.BaseFragment
+import com.teemo.common.base.BaseFragment
 import com.teemo.hello.bean.send.ProfileSendBean
-import com.teemo.hello.ui.profile.ProfileActivity.Companion.PROFILE_TYPE_LOGIN
-import com.teemo.hello.ui.profile.ProfileActivity.Companion.PROFILE_TYPE_REGISTER
+import com.teemo.hello.pages.profile.ProfileActivity.Companion.PROFILE_TYPE_LOGIN
+import com.teemo.hello.pages.profile.ProfileActivity.Companion.PROFILE_TYPE_REGISTER
 import com.teemo.hello.utils.InjectorUtils
 import com.teemo.hello.viewmodels.profile.ProfileViewModel
 import kotlinx.android.synthetic.main.fragment_login_or_register.*

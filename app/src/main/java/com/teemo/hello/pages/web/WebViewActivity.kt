@@ -1,4 +1,4 @@
-package com.teemo.hello.ui.web
+package com.teemo.hello.pages.web
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -16,7 +16,7 @@ import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebView
 import com.tencent.smtt.sdk.WebViewClient
 import com.teemo.hello.R
-import com.teemo.hello.base.BaseActivity
+import com.teemo.common.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_web_view.*
 
 /**

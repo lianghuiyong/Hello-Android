@@ -2,7 +2,7 @@ package com.teemo.hello.viewmodels.splash
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.teemo.hello.base.BaseViewModel
+import com.teemo.common.base.BaseViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

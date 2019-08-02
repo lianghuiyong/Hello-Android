@@ -1,4 +1,4 @@
-package com.teemo.hello.ui.main
+package com.teemo.hello.pages.main
 
 import android.view.Menu
 import android.view.MenuItem
@@ -13,8 +13,8 @@ import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import com.google.android.material.navigation.NavigationView
 import com.teemo.hello.R
-import com.teemo.hello.base.BaseActivity
-import com.teemo.hello.ui.profile.ProfileActivity
+import com.teemo.common.base.BaseActivity
+import com.teemo.hello.pages.profile.ProfileActivity
 import com.teemo.hello.utils.InjectorUtils
 import com.teemo.hello.viewmodels.main.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*

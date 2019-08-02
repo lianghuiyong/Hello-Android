@@ -1,7 +1,7 @@
 package com.teemo.hello.api
 
 import android.text.TextUtils
-import com.teemo.hello.base.BaseResponse
+import com.teemo.common.base.BaseResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

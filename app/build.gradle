@@ -17,6 +17,10 @@ android {
 
         renderscriptTargetApi 18
         renderscriptSupportModeEnabled true
+
+        ndk {
+            abiFilters 'armeabi'
+        }
     }
     buildTypes {
         release {
@@ -93,4 +97,8 @@ dependencies {
     //权限
     implementation "org.permissionsdispatcher:permissionsdispatcher:4.5.0"
     kapt "org.permissionsdispatcher:permissionsdispatcher-processor:4.5.0"
+
+    //QMUI
+    implementation 'com.qmuiteam:qmui:1.4.0'
+    implementation 'com.qmuiteam:arch:0.6.0'
 }

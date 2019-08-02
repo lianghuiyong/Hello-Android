@@ -1,4 +1,4 @@
-package com.teemo.hello.ui.splash
+package com.teemo.hello.pages.splash
 
 import android.Manifest
 import android.util.Log
@@ -7,8 +7,8 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.teemo.hello.R
-import com.teemo.hello.base.BaseActivity
-import com.teemo.hello.ui.main.MainActivity
+import com.teemo.common.base.BaseActivity
+import com.teemo.hello.pages.main.MainActivity
 import com.teemo.hello.utils.InjectorUtils
 import com.teemo.hello.viewmodels.splash.SplashViewModel
 import kotlinx.android.synthetic.main.activity_splash.*

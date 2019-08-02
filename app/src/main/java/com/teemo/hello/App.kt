@@ -1,4 +1,4 @@
-package com.teemo.hello.app
+package com.teemo.hello
 
 import android.app.Application
 import android.content.ComponentCallbacks2

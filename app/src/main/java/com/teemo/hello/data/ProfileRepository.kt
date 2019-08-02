@@ -1,7 +1,7 @@
 package com.teemo.hello.data
 
 import com.teemo.hello.api.NetworkApi
-import com.teemo.hello.base.BaseResponse
+import com.teemo.common.base.BaseResponse
 import com.teemo.hello.bean.response.ProfileResponse
 import retrofit2.http.Field
 

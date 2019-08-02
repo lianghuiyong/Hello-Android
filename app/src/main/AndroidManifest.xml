@@ -10,7 +10,7 @@
 
 
     <application
-            android:name="com.teemo.hello.app.App"
+            android:name=".App"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -21,7 +21,7 @@
             tools:ignore="GoogleAppIndexingWarning">
         <!--启动页-->
         <activity
-                android:name="com.teemo.hello.ui.splash.SplashActivity"
+                android:name=".pages.splash.SplashActivity"
                 android:screenOrientation="portrait"
                 android:theme="@style/AppTheme.FullScreen.SplashTheme">
             <intent-filter>
@@ -32,17 +32,17 @@
         </activity>
         <!--首页-->
         <activity
-                android:name="com.teemo.hello.ui.main.MainActivity"
+                android:name=".pages.main.MainActivity"
                 android:label="@string/app_name"
                 android:screenOrientation="portrait"/>
         <!--登录/注册页-->
         <activity
-                android:name="com.teemo.hello.ui.profile.ProfileActivity"
+                android:name=".pages.profile.ProfileActivity"
                 android:screenOrientation="portrait"/>
         <activity
                 android:configChanges="orientation|screenSize|keyboardHidden"
                 android:windowSoftInputMode="stateHidden|adjustResize"
-                android:name="com.teemo.hello.ui.web.WebViewActivity"/>
+                android:name=".pages.web.WebViewActivity"/>
     </application>
 
 </manifest>

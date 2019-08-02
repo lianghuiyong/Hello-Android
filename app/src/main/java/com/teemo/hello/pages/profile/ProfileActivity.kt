@@ -1,10 +1,10 @@
-package com.teemo.hello.ui.profile
+package com.teemo.hello.pages.profile
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import com.teemo.hello.R
-import com.teemo.hello.base.BaseActivity
+import com.teemo.common.base.BaseActivity
 import com.teemo.hello.widget.transformer.DepthPageTransformer
 import kotlinx.android.synthetic.main.activity_profile.*
 

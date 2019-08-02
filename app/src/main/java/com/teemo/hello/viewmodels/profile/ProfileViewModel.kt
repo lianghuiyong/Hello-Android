@@ -3,7 +3,7 @@ package com.teemo.hello.viewmodels.profile
 import android.text.TextUtils
 import androidx.lifecycle.MutableLiveData
 import com.teemo.hello.api.RequestState
-import com.teemo.hello.base.BaseViewModel
+import com.teemo.common.base.BaseViewModel
 import com.teemo.hello.bean.response.ProfileResponse
 import com.teemo.hello.bean.send.ProfileSendBean
 import com.teemo.hello.data.ProfileRepository

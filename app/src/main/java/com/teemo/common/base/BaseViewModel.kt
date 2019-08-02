@@ -1,4 +1,4 @@
-package com.teemo.hello.base
+package com.teemo.common.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
