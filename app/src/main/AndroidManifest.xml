@@ -10,20 +10,20 @@
 
 
     <application
-            android:name=".App"
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme"
-            android:networkSecurityConfig="@xml/network_security_config"
-            tools:ignore="GoogleAppIndexingWarning">
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/network_security_config"
+        tools:ignore="GoogleAppIndexingWarning">
         <!--启动页-->
         <activity
-                android:name=".pages.splash.SplashActivity"
-                android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.SplashTheme">
+            android:name=".pages.splash.SplashPage"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -31,18 +31,15 @@
             </intent-filter>
         </activity>
         <!--首页-->
-        <activity
-                android:name=".pages.main.MainActivity"
-                android:label="@string/app_name"
-                android:screenOrientation="portrait"/>
+        <activity android:name=".pages.main.MainPage_old" android:screenOrientation="portrait"/>
+        <!--首页2-->
+        <activity android:name=".pages.main.MainPage" android:screenOrientation="portrait"/>
         <!--登录/注册页-->
+        <activity android:name=".pages.profile.ProfilePage" android:screenOrientation="portrait"/>
         <activity
-                android:name=".pages.profile.ProfileActivity"
-                android:screenOrientation="portrait"/>
-        <activity
-                android:configChanges="orientation|screenSize|keyboardHidden"
-                android:windowSoftInputMode="stateHidden|adjustResize"
-                android:name=".pages.web.WebViewActivity"/>
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:name=".pages.web.WebViewPage"/>
     </application>
 
 </manifest>

@@ -8,8 +8,8 @@ import com.teemo.hello.R
 import com.teemo.hello.api.RequestState
 import com.teemo.common.base.BaseFragment
 import com.teemo.hello.bean.send.ProfileSendBean
-import com.teemo.hello.pages.profile.ProfileActivity.Companion.PROFILE_TYPE_LOGIN
-import com.teemo.hello.pages.profile.ProfileActivity.Companion.PROFILE_TYPE_REGISTER
+import com.teemo.hello.pages.profile.ProfilePage.Companion.PROFILE_TYPE_LOGIN
+import com.teemo.hello.pages.profile.ProfilePage.Companion.PROFILE_TYPE_REGISTER
 import com.teemo.hello.utils.InjectorUtils
 import com.teemo.hello.viewmodels.profile.ProfileViewModel
 import kotlinx.android.synthetic.main.fragment_login_or_register.*
@@ -26,7 +26,7 @@ class LoginOrRegisterFragment : BaseFragment() {
 
     override fun getLayoutId(): Int = R.layout.fragment_login_or_register
 
-    override fun initView() {
+    override fun initData() {
         arguments?.apply {
             profileViewModel.setProfileType(getInt(PROFILE_TYPE))
         }
@@ -98,10 +98,6 @@ class LoginOrRegisterFragment : BaseFragment() {
     private fun showButton() {
         login_btn.visibility = View.VISIBLE
         progress_bar.visibility = View.INVISIBLE
-    }
-
-    override fun initData() {
-
     }
 
     companion object {

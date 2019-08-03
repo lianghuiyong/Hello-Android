@@ -3,17 +3,13 @@ package com.teemo.hello.pages.splash
 import android.Manifest
 import android.animation.ObjectAnimator
 import android.view.View
-import android.view.animation.AlphaAnimation
-import android.view.animation.AnticipateOvershootInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
-import androidx.viewpager2.widget.ViewPager2
 import com.teemo.common.base.BaseActivity
 import com.teemo.hello.R
-import com.teemo.hello.pages.main.MainActivity
-import com.teemo.hello.pages.splash.adapter.SplashAdapter
+import com.teemo.hello.pages.main.MainPage
 import com.teemo.hello.utils.InjectorUtils
 import com.teemo.hello.viewmodels.splash.SplashViewModel
 import kotlinx.android.synthetic.main.activity_splash.*
@@ -29,7 +25,7 @@ import permissions.dispatcher.RuntimePermissions
  */
 
 @RuntimePermissions
-class SplashActivity : BaseActivity() {
+class SplashPage : BaseActivity() {
     private val delayViewModel by viewModels<SplashViewModel> {
         InjectorUtils.provideSplashViewModelFactory()
     }
@@ -55,7 +51,7 @@ class SplashActivity : BaseActivity() {
         skip()
     }
 
-    override fun initView() {
+    override fun initData() {
         skip_btn.setOnClickListener {
             skip()
         }
@@ -67,9 +63,7 @@ class SplashActivity : BaseActivity() {
                 showWRWithPermissionCheck()
             }
         })
-    }
 
-    override fun initData() {
         startAnim()
 //        home_view_pager.apply {
 //            val mAdapter = SplashAdapter()
@@ -107,7 +101,7 @@ class SplashActivity : BaseActivity() {
 
     private fun skip() {
         delayViewModel.viewModelScope.cancel()
-        nextActivity(MainActivity::class.java)
+        nextActivity(MainPage::class.java)
         finish()
     }
 

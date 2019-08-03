@@ -21,16 +21,13 @@ abstract class BaseFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
         initData()
     }
 
     @LayoutRes
     protected abstract fun getLayoutId(): Int
 
-    protected abstract fun initView()
     protected abstract fun initData()
-
 
     protected fun nextActivity(
         clazz: Class<*>,

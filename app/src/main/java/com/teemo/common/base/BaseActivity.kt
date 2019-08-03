@@ -36,14 +36,12 @@ abstract class BaseActivity : BaseSwipeBackActivity() {
         QMUIStatusBarHelper.translucent(this)
         QMUIStatusBarHelper.setStatusBarDarkMode(this)
 
-        initView()
         initData()
     }
 
     @LayoutRes
     protected abstract fun getLayoutId(): Int
 
-    protected abstract fun initView()
     protected abstract fun initData()
     protected fun nextActivity(
         clazz: Class<*>,

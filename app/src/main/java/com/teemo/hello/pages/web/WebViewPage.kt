@@ -18,15 +18,13 @@ import kotlinx.android.synthetic.main.activity_web_view.*
  *  @description: webView页面
  *  @date: 2019/7/31 11:38
  */
-class WebViewActivity : BaseActivity() {
+class WebViewPage : BaseActivity() {
     override fun getLayoutId() = R.layout.activity_web_view
 
-    override fun initView() {
+    override fun initData() {
         tool_bar.addOnBackListener { onBackPressed() }
         webView.loadUrl(intent.getStringExtra("url"))
-    }
 
-    override fun initData() {
         val mChromeClient = object : WebChromeClient() {
             override fun onProgressChanged(p0: WebView?, newProgress: Int) {
                 // 修改进度条

@@ -13,10 +13,10 @@ import kotlinx.android.synthetic.main.activity_profile.*
  *  @description:
  *  @date: 2019/7/16 11:22
  */
-class ProfileActivity : BaseActivity() {
+class ProfilePage : BaseActivity() {
     override fun getLayoutId() = R.layout.activity_profile
 
-    override fun initView() {
+    override fun initData() {
         setSupportActionBar(toolbar)
         //toolbar
         supportActionBar?.run {
@@ -43,10 +43,6 @@ class ProfileActivity : BaseActivity() {
         TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
             tab.text = tabNames[position]
         }.attach()
-    }
-
-    override fun initData() {
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -8,9 +8,8 @@ import android.net.Uri
 import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
-import android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
 import androidx.annotation.AttrRes
-import com.teemo.hello.pages.web.WebViewActivity
+import com.teemo.hello.pages.web.WebViewPage
 import com.tencent.smtt.sdk.CookieManager
 import com.tencent.smtt.sdk.WebSettings
 import com.tencent.smtt.sdk.WebView
@@ -61,7 +60,7 @@ class CommonWebView : WebView {
     fun shouldOverrideUrlLoading(isFinish: Boolean, jumpUrl: String?): Boolean {
         Log.e("xxx",jumpUrl)
         return if (!jumpUrl.equals(url) && isFinish) {
-            val intent = Intent(context, WebViewActivity::class.java)
+            val intent = Intent(context, WebViewPage::class.java)
             intent.putExtra("url", jumpUrl)
             context.startActivity(intent)
             true

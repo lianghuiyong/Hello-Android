@@ -7,12 +7,12 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:showIn="@layout/app_bar_main"
-        tools:context=".pages.main.MainActivity">
+        tools:context=".pages.main.MainPage_old">
 
     <fragment
             android:id="@+id/mainFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="com.teemo.hello.pages.main.MainFragment"/>
+            android:name="com.teemo.hello.pages.main.fragments.MainFragment"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

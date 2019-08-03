@@ -1,4 +1,4 @@
-package com.teemo.hello.pages.main
+package com.teemo.hello.pages.main.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
@@ -8,7 +8,7 @@ import com.teemo.hello.adapter.WxAuthorAdapter
 import com.teemo.hello.api.RequestState
 import com.teemo.common.base.BaseFragment
 import com.teemo.hello.bean.response.BannerResponse
-import com.teemo.hello.pages.web.WebViewActivity
+import com.teemo.hello.pages.web.WebViewPage
 import com.teemo.hello.utils.InjectorUtils
 import com.teemo.hello.viewmodels.main.MainViewModel
 import com.teemo.hello.widget.banner.BannerImageLoader
@@ -28,11 +28,9 @@ class MainFragment : BaseFragment() {
 
     override fun getLayoutId() = R.layout.fragment_main
 
-    override fun initView() {
-        banner.setImageLoader(BannerImageLoader())
-    }
-
     override fun initData() {
+        banner.setImageLoader(BannerImageLoader())
+
         viewModel.banner.observe(viewLifecycleOwner, Observer {
             banner.setImages(it)
             banner.start()
@@ -43,7 +41,7 @@ class MainFragment : BaseFragment() {
             val args = Bundle()
             args.putString("title", banners[it].title)
             args.putString("url", banners[it].url)
-            nextActivity(WebViewActivity::class.java, args)
+            nextActivity(WebViewPage::class.java, args)
         }
 
         adapter = WxAuthorAdapter({

@@ -14,7 +14,7 @@ import androidx.lifecycle.Observer
 import com.google.android.material.navigation.NavigationView
 import com.teemo.hello.R
 import com.teemo.common.base.BaseActivity
-import com.teemo.hello.pages.profile.ProfileActivity
+import com.teemo.hello.pages.profile.ProfilePage
 import com.teemo.hello.utils.InjectorUtils
 import com.teemo.hello.viewmodels.main.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.toolbar_layout.*
  * @description: 主页
  * @date: 2019/07/06
  */
-class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainPage_old : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     private val mainViewModel by viewModels<MainViewModel> {
         InjectorUtils.provideMainViewModelFactory(this)
     }
@@ -38,10 +38,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun getLayoutId() = R.layout.activity_main
 
-    override fun initView() {
+    override fun initData() {
         setSupportActionBar(toolbar)
         fab.setOnClickListener {
-            nextActivity(ProfileActivity::class.java)
+            nextActivity(ProfilePage::class.java)
 //            showSnackBar(it, "点我干嘛")
         }
         val toggle = ActionBarDrawerToggle(
@@ -59,7 +59,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         val headerGroup = headerView.findViewById<Group>(R.id.icon_name_group)
         val loginButton = headerView.findViewById<AppCompatButton>(R.id.login_btn)
         loginButton.setOnClickListener {
-            nextActivity(ProfileActivity::class.java)
+            nextActivity(ProfilePage::class.java)
         }
         mainViewModel.hasLoginLiveData.observe(this, Observer {
             with(headerGroup) {
@@ -73,10 +73,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         mainViewModel.getUserLiveData().observe(this, Observer {
             headerName.text = it?.name
         })
-    }
-
-    override fun initData() {
-
     }
 
     override fun doOnBackPressed() {
