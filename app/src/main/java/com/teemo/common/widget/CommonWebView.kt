@@ -7,8 +7,10 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import androidx.annotation.AttrRes
 import android.util.AttributeSet
+import com.teemo.hello.pages.web.WebViewActivity
 import com.tencent.smtt.sdk.CookieManager
 import com.tencent.smtt.sdk.WebSettings
 import com.tencent.smtt.sdk.WebView
@@ -59,6 +61,13 @@ class CommonWebView : WebView {
     }
 
     fun shouldOverrideUrlLoading(view: WebView?, jumpUrl: String?): Boolean {
+//        Log.e("xxx",jumpUrl)
+//        Log.e("xxx",url)
+//        if (jumpUrl != url) {
+//            val intent = Intent(context, WebViewActivity::class.java)
+//            intent.putExtra("url", jumpUrl)
+//            context.startActivity(intent)
+//        }
         return false
     }
 

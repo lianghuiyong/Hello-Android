@@ -7,7 +7,6 @@ import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.ProgressBar
 import androidx.annotation.AttrRes
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 
 class CommonWebProgress : ProgressBar {
     constructor(context: Context) : super(context)
@@ -33,7 +32,16 @@ class CommonWebProgress : ProgressBar {
         mAnimator?.start()
 
         postDelayed({
-            visibility = if (newProgress >= 100) View.GONE else View.VISIBLE
+            when{
+                newProgress >= 100 ->{
+                    progress = 0
+                    visibility = View.GONE
+                }
+
+                else -> {
+                    visibility = View.VISIBLE
+                }
+            }
         }, delayMillis)
     }
 }
