@@ -4,8 +4,10 @@ import android.animation.ObjectAnimator
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.DecelerateInterpolator
 import android.widget.ProgressBar
 import androidx.annotation.AttrRes
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 
 class CommonWebProgress : ProgressBar {
     constructor(context: Context) : super(context)
@@ -14,8 +16,8 @@ class CommonWebProgress : ProgressBar {
 
     fun upProgress(newProgress: Int){
         when {
-            newProgress < 30 -> upAnim(30, 500, 0)
-            newProgress < 100 -> upAnim( newProgress, 100, 0)
+            newProgress < 30 -> upAnim(30, 350, 0)
+            newProgress < 100 -> upAnim( newProgress, 350, 0)
             else -> upAnim(100, 200, 400)
         }
     }
@@ -23,10 +25,11 @@ class CommonWebProgress : ProgressBar {
     private var mAnimator: ObjectAnimator? = null
     private fun upAnim(newProgress: Int, duration: Long, delayMillis : Long){
         if (mAnimator != null && mAnimator!!.isRunning) {
-            mAnimator!!.cancel()
+            mAnimator?.pause()
         }
         mAnimator = ObjectAnimator.ofInt(this, "progress", newProgress )
         mAnimator?.duration = duration
+        mAnimator?.interpolator = DecelerateInterpolator()
         mAnimator?.start()
 
         postDelayed({

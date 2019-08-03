@@ -8,15 +8,17 @@
 
     <!--默认Theme-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 应用的主要色调 -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- 应用的主要暗色调 -->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- 一般控件的选中效果默认采用该颜色 -->
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <!--首页、欢迎页-->
     <style name="AppTheme.SplashTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/window_background</item>
-        <item name="android:windowAnimationStyle">@style/SplashAnimation</item>
     </style>
 
 </resources>

@@ -44,14 +44,14 @@ public class CommonToolBar extends FrameLayout {
 
     public void initCustomAttrs(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CommonToolBar, defStyleAttr, 0);
-        int btnBackColor = typedArray.getColor(R.styleable.CommonToolBar_btn_back_color, ContextCompat.getColor(context, R.color.black_alpha_224));
+        int btnBackColor = typedArray.getColor(R.styleable.CommonToolBar_btn_back_color, ContextCompat.getColor(context, android.R.color.white));
         String backContent = typedArray.getString(R.styleable.CommonToolBar_back_content);
 
-        int titleColor = typedArray.getColor(R.styleable.CommonToolBar_title_color, ContextCompat.getColor(context, R.color.black_alpha_224));
+        int titleColor = typedArray.getColor(R.styleable.CommonToolBar_title_color, ContextCompat.getColor(context, android.R.color.white));
         float titleSize = typedArray.getDimensionPixelSize(R.styleable.CommonToolBar_title_size, 0);
         String titleContent = typedArray.getString(R.styleable.CommonToolBar_title_content);
 
-        int moreTitleColor = typedArray.getColor(R.styleable.CommonToolBar_more_color, ContextCompat.getColor(context, R.color.black_alpha_224));
+        int moreTitleColor = typedArray.getColor(R.styleable.CommonToolBar_more_color, ContextCompat.getColor(context, android.R.color.white));
         float moreTitleSize = typedArray.getDimensionPixelSize(R.styleable.CommonToolBar_more_size, 0);
         String moreTitleContent = typedArray.getString(R.styleable.CommonToolBar_more_content);
         int moreImageRes = typedArray.getResourceId(R.styleable.CommonToolBar_more_image, 0);

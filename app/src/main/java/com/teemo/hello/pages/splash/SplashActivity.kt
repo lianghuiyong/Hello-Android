@@ -4,6 +4,8 @@ import android.Manifest
 import android.animation.ObjectAnimator
 import android.view.View
 import android.view.animation.AlphaAnimation
+import android.view.animation.AnticipateOvershootInterpolator
+import android.view.animation.DecelerateInterpolator
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
@@ -30,6 +32,10 @@ import permissions.dispatcher.RuntimePermissions
 class SplashActivity : BaseActivity() {
     private val delayViewModel by viewModels<SplashViewModel> {
         InjectorUtils.provideSplashViewModelFactory()
+    }
+
+    override fun canDragBack(): Boolean {
+        return false
     }
 
     override fun getLayoutId() = R.layout.activity_splash
@@ -64,35 +70,39 @@ class SplashActivity : BaseActivity() {
     }
 
     override fun initData() {
-        home_view_pager.apply {
-            val mAdapter = SplashAdapter()
-            val list = ArrayList<Int>()
-            list.add(R.drawable.app_splash_1)
-            list.add(R.drawable.app_splash_2)
-            list.add(R.drawable.app_splash_3)
-            mAdapter.setNewData(list)
-            adapter = mAdapter
-            offscreenPageLimit = 1
-
-            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    if (position == list.size - 1) {
-                        startAnim()
-                    }
-                }
-            })
-        }
-
-        val viewAnim = ObjectAnimator.ofFloat(home_view_pager, "alpha", 0.3f, 1f)
-        viewAnim.startDelay = 300
-        viewAnim.start()
+        startAnim()
+//        home_view_pager.apply {
+//            val mAdapter = SplashAdapter()
+//            val list = ArrayList<Int>()
+//            list.add(R.drawable.app_splash_1)
+//            list.add(R.drawable.app_splash_2)
+//            list.add(R.drawable.app_splash_3)
+//            mAdapter.setNewData(list)
+//            adapter = mAdapter
+//            offscreenPageLimit = 1
+//
+//            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+//                override fun onPageSelected(position: Int) {
+//                    if (position == list.size - 1) {
+//                        startAnim()
+//                    }
+//                }
+//            })
+//        }
+//
+//        val viewAnim = ObjectAnimator.ofFloat(home_view_pager, "alpha", 0.3f, 1f)
+//        viewAnim.startDelay = 300
+//        viewAnim.start()
     }
 
     private fun startAnim() {
-        delayViewModel.startDelay()
+        bottom_layout.postDelayed({
+            delayViewModel.startDelay()
 
-        val viewAnim = ObjectAnimator.ofFloat(bottom_layout, "translationY", bottom_layout.height.toFloat(), 0f)
-        viewAnim.start()
+            val viewAnim = ObjectAnimator.ofFloat(bottom_layout, "translationY", bottom_layout.height.toFloat(), 0f)
+            viewAnim.interpolator = DecelerateInterpolator()
+            viewAnim.start()
+        },200)
     }
 
     private fun skip() {

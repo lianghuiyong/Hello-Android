@@ -4,7 +4,6 @@ import android.annotation.TargetApi
 import android.graphics.Bitmap
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 import com.teemo.common.base.BaseActivity
 import com.teemo.hello.R
 import com.tencent.smtt.export.external.interfaces.WebResourceError
@@ -23,7 +22,6 @@ class WebViewActivity : BaseActivity() {
     override fun getLayoutId() = R.layout.activity_web_view
 
     override fun initView() {
-        QMUIStatusBarHelper.setStatusBarLightMode(this)
         tool_bar.addOnBackListener { onBackPressed() }
         webView.loadUrl(intent.getStringExtra("url"))
     }
@@ -88,7 +86,7 @@ class WebViewActivity : BaseActivity() {
         return true
     }
 
-    override fun onBackPressed() {
+    override fun doOnBackPressed() {
         webView.onBackPressed(this)
     }
 

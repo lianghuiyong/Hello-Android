@@ -32,6 +32,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
     var count = 0
 
+    override fun canDragBack(): Boolean {
+        return false
+    }
+
     override fun getLayoutId() = R.layout.activity_main
 
     override fun initView() {
@@ -75,11 +79,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     }
 
-    override fun onBackPressed() {
+    override fun doOnBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
-            super.onBackPressed()
+            super.doOnBackPressed()
         }
     }
 

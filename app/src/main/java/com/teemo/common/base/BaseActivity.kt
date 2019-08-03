@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.snackbar.Snackbar
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
+import com.teemo.common.swipe.BaseSwipeBackActivity
 import com.teemo.hello.R
 
 /**
@@ -16,7 +17,7 @@ import com.teemo.hello.R
  * @description: activity抽象基类
  * @date: 2019/07/06
  */
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : BaseSwipeBackActivity() {
     init {
         //兼容svg
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)

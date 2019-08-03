@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.ComponentCallbacks2
 import android.util.Log
 import com.bumptech.glide.Glide
+import com.qmuiteam.qmui.arch.QMUISwipeBackActivityManager
 import com.tencent.smtt.sdk.QbSdk
 
 /**
@@ -27,8 +28,8 @@ class App : Application() {
             }
             override fun onCoreInitFinished() {}
         }
-
         QbSdk.initX5Environment(this, callback)
+        QMUISwipeBackActivityManager.init(this)
     }
 
     companion object {
