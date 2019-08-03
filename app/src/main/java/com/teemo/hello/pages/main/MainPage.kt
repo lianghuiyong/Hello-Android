@@ -5,6 +5,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper
 import com.teemo.common.base.BaseActivity
+import com.teemo.common.widget.CommonTabLayoutMediator
 import com.teemo.hello.R
 import com.teemo.hello.pages.main.fragments.MainFragment
 import com.teemo.hello.pages.main.fragments.HomeFragment
@@ -29,11 +30,9 @@ class MainPage : BaseActivity() {
             }
         }
 
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            when(position){
-                0 ->  tab.text = "推荐"
-                else ->  tab.text = "电台"
-            }
-        }.attach()
+        val list = ArrayList<String>()
+        list.add("推荐")
+        list.add("视频")
+        CommonTabLayoutMediator(tabLayout, viewPager, list).attach()
     }
 }

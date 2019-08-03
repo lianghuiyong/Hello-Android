@@ -90,13 +90,13 @@ class SplashPage : BaseActivity() {
     }
 
     private fun startAnim() {
-        bottom_layout.postDelayed({
+        bottom_layout.post{
             delayViewModel.startDelay()
 
             val viewAnim = ObjectAnimator.ofFloat(bottom_layout, "translationY", bottom_layout.height.toFloat(), 0f)
             viewAnim.interpolator = DecelerateInterpolator()
             viewAnim.start()
-        },200)
+        }
     }
 
     private fun skip() {

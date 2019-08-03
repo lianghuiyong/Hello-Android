@@ -27,7 +27,7 @@
                 android:layout_gravity="center"
                 android:padding="10dp"
                 android:tint="@color/black_alpha_224"
-                app:srcCompat="@drawable/module_common_ic_page_back" />
+                app:srcCompat="@drawable/common_ic_page_back" />
 
             <TextView
                 android:id="@+id/toolbar_text_back"
