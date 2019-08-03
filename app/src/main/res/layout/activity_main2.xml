@@ -1,42 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/white"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
-    <com.teemo.common.widget.CommonStatusBar
-        android:id="@+id/common_status_bar"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        app:layout_constraintTop_toBottomOf="@+id/common_status_bar"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:tabIndicatorFullWidth="false"
-        app:tabMode="auto"
-        app:tabPaddingBottom="0dp"
-        app:tabPaddingTop="0dp"
-        app:tabPaddingEnd="@dimen/d10"
-        app:tabPaddingStart="@dimen/d10"
-        app:tabMaxWidth="100dp"
-        app:tabMinWidth="20dp"
-        app:tabIndicator="@drawable/common_tab_layout_indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/d38"/>
+        <com.teemo.common.widget.CommonStatusBar
+            android:id="@+id/common_status_bar"
+            android:layout_width="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="wrap_content"/>
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintVertical_weight="1"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/open_drawer"
+            android:layout_width="@dimen/d35"
+            android:layout_height="@dimen/d35"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/common_status_bar"
+            app:srcCompat="@drawable/common_ic_drawer"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="@dimen/d8"
+            android:layout_marginTop="@dimen/d3"
+            android:layout_marginLeft="@dimen/d10"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            app:layout_constraintTop_toBottomOf="@+id/common_status_bar"
+            app:layout_constraintLeft_toRightOf="@+id/open_drawer"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="@dimen/d48"
+            app:tabIndicatorFullWidth="false"
+            app:tabMode="auto"
+            app:tabPaddingBottom="0dp"
+            app:tabPaddingTop="0dp"
+            app:tabPaddingEnd="@dimen/d10"
+            app:tabPaddingStart="@dimen/d10"
+            app:tabMaxWidth="100dp"
+            app:tabMinWidth="20dp"
+            app:tabIndicator="@drawable/common_tab_layout_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/d38"/>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include layout="@layout/activity_drawer_layout"/>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

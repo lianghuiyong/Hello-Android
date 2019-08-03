@@ -1,5 +1,6 @@
 package com.teemo.hello.pages.main
 
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
@@ -14,8 +15,16 @@ import kotlinx.android.synthetic.main.activity_main2.*
 class MainPage : BaseActivity() {
     override fun getLayoutId() = R.layout.activity_main2
 
+    override fun canDragBack(): Boolean {
+        return false
+    }
+
     override fun initData() {
         QMUIStatusBarHelper.setStatusBarLightMode(this)
+
+        open_drawer.setOnClickListener {
+            drawer_layout.openDrawer(GravityCompat.START)
+        }
 
         viewPager.adapter = object : FragmentStateAdapter(this) {
             override fun createFragment(position: Int): Fragment {
