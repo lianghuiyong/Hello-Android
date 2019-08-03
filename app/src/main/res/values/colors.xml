@@ -5,7 +5,7 @@
     <!-- 应用的主要暗色调 -->
     <color name="colorPrimaryDark">#00574B</color>
     <!-- 一般控件的选中效果默认采用该颜色 -->
-    <color name="colorAccent">@android:color/holo_blue_dark</color>
+    <color name="colorAccent">#d9426f</color>
 
     <!--black-->
     <color name="black_alpha_16">#10000000</color>

@@ -36,11 +36,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="@dimen/d25"
             android:textStyle="bold"
             android:textColor="@color/black_alpha_224"
             android:text="Hello Android"
-            android:textSize="22sp"
+            android:textSize="@dimen/s21"
             android:layout_height="wrap_content"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -48,10 +48,10 @@
             app:layout_constraintTop_toBottomOf="@+id/big_text"
             app:layout_constraintLeft_toLeftOf="@+id/big_text"
             app:layout_constraintRight_toRightOf="@+id/big_text"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/black_alpha_128"
+            android:layout_marginTop="@dimen/d8"
+            android:textColor="@color/black_alpha_96"
             android:text="愿编程路上，坑越踩越平坦"
-            android:textSize="11sp"
+            android:textSize="@dimen/s11"
             android:layout_height="wrap_content"/>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -61,14 +61,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:background="@drawable/shape_splash_button"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="@dimen/d20"
             android:text="跳过"
-            android:textSize="12sp"
+            android:textColor="@color/black_alpha_64"
+            android:textSize="@dimen/s12"
             android:gravity="center"
-            android:layout_marginBottom="30dp"
-            app:rippleColor="@color/green_100"
-            app:strokeWidth="1dp"
-            app:cornerRadius="10dp"/>
+            android:layout_marginBottom="@dimen/d30"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
