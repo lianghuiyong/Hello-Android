@@ -3,11 +3,11 @@ package com.teemo.hello.pages.web
 import android.annotation.TargetApi
 import android.graphics.Bitmap
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import com.teemo.common.base.BaseActivity
 import com.teemo.hello.R
-import com.tencent.smtt.export.external.interfaces.WebResourceError
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest
+import com.tencent.smtt.export.external.interfaces.*
 import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebView
 import com.tencent.smtt.sdk.WebViewClient
@@ -41,26 +41,31 @@ class WebViewActivity : BaseActivity() {
         }
 
         val mWebViewClient = object : WebViewClient() {
+            var isFinish = false
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
                 //进度条
                 progress_bar.upProgress(30)
+                isFinish = false
+                Log.e("xxx","onPageStarted")
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 //进度条
                 progress_bar.upProgress(100)
+                isFinish = true
+                Log.e("xxx","onPageFinished")
             }
 
             @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-                return webView.shouldOverrideUrlLoading(view, request?.url.toString())
+                return webView.shouldOverrideUrlLoading(isFinish, request?.url.toString())
             }
 
             //防止加载网页时调起系统浏览器
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                return webView.shouldOverrideUrlLoading(view, url)
+                return webView.shouldOverrideUrlLoading(isFinish, url)
             }
 
             @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -79,11 +84,6 @@ class WebViewActivity : BaseActivity() {
             webViewClient = mWebViewClient
             webChromeClient = mChromeClient
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        finish()
-        return true
     }
 
     override fun doOnBackPressed() {

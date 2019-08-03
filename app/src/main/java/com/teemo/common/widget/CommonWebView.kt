@@ -1,15 +1,15 @@
 package com.teemo.common.widget
 
-import android.app.Activity
-import android.util.Log
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
-import android.os.Bundle
-import androidx.annotation.AttrRes
 import android.util.AttributeSet
+import android.util.Log
+import android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+import androidx.annotation.AttrRes
 import com.teemo.hello.pages.web.WebViewActivity
 import com.tencent.smtt.sdk.CookieManager
 import com.tencent.smtt.sdk.WebSettings
@@ -41,34 +41,33 @@ class CommonWebView : WebView {
         x5WebViewExtension?.isVerticalScrollBarEnabled = false
         x5WebViewExtension?.setScrollBarFadingEnabled(false)
 
-        val webSetting = settings
-        webSetting.javaScriptEnabled = true
+        settings.javaScriptEnabled = true
 
-        webSetting.useWideViewPort = true  //将图片调整到适合webview的大小
-        webSetting.loadWithOverviewMode = true // 缩放至屏幕的大小
-        webSetting.setSupportZoom(false)  //支持缩放，默认为true。是下面那个的前提。
-        webSetting.builtInZoomControls = true //设置内置的缩放控件。
-        webSetting.layoutAlgorithm = WebSettings.LayoutAlgorithm.SINGLE_COLUMN //支持内容重新布局
-        webSetting.allowFileAccess = true  //设置可以访问文件
-        webSetting.setNeedInitialFocus(true) //当webview调用requestFocus时为webview设置节点
-        webSetting.loadsImagesAutomatically = true  //支持自动加载图片
-        webSetting.defaultTextEncodingName = "utf-8"//设置编码格式
-        webSetting.setSupportMultipleWindows(true)
-        webSetting.javaScriptCanOpenWindowsAutomatically = true //自动开启窗口 js:window.open()
+        settings.useWideViewPort = true  //将图片调整到适合webview的大小
+        settings.loadWithOverviewMode = true // 缩放至屏幕的大小
+        settings.setSupportZoom(false)  //支持缩放，默认为true。是下面那个的前提。
+        settings.builtInZoomControls = true //设置内置的缩放控件。
+        settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.SINGLE_COLUMN //支持内容重新布局
+        settings.allowFileAccess = true  //设置可以访问文件
+        settings.setNeedInitialFocus(true) //当webview调用requestFocus时为webview设置节点
+        settings.loadsImagesAutomatically = true  //支持自动加载图片
+        settings.defaultTextEncodingName = "utf-8"//设置编码格式
+        settings.javaScriptCanOpenWindowsAutomatically = true //自动开启窗口 js:window.open()
 
-        setCache(webSetting)
+        setCache(settings)
         setCookiesEnabled(true)
     }
 
-    fun shouldOverrideUrlLoading(view: WebView?, jumpUrl: String?): Boolean {
-//        Log.e("xxx",jumpUrl)
-//        Log.e("xxx",url)
-//        if (jumpUrl != url) {
-//            val intent = Intent(context, WebViewActivity::class.java)
-//            intent.putExtra("url", jumpUrl)
-//            context.startActivity(intent)
-//        }
-        return false
+    fun shouldOverrideUrlLoading(isFinish: Boolean, jumpUrl: String?): Boolean {
+        Log.e("xxx",jumpUrl)
+        return if (!jumpUrl.equals(url) && isFinish) {
+            val intent = Intent(context, WebViewActivity::class.java)
+            intent.putExtra("url", jumpUrl)
+            context.startActivity(intent)
+            true
+        }else{
+            false
+        }
     }
 
     private fun setCache(settings: WebSettings) {

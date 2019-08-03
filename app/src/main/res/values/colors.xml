@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <!-- 应用的主要色调 -->
+    <color name="colorPrimary">#2A2D32</color>
+    <!-- 应用的主要暗色调 -->
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#5af158</color>
+    <!-- 一般控件的选中效果默认采用该颜色 -->
+    <color name="colorAccent">@android:color/holo_blue_dark</color>
 
     <!--black-->
     <color name="black_alpha_16">#10000000</color>
