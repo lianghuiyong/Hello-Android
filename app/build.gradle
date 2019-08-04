@@ -39,6 +39,35 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            keyAlias 'better'
+            keyPassword 'better1992'
+            storeFile file('better_test_key.jks')
+            storePassword 'better1992'
+
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    //apk文件重命名
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            def buildType = variant.buildType.name
+            outputFileName = "Hello_Android-v${defaultConfig.versionName}-${defaultConfig.versionCode}-${buildType}.apk"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
