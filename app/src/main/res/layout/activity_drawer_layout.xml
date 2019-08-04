@@ -107,6 +107,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="设置"
             android:textSize="@dimen/s14"
+
             android:textColor="@color/colorPrimary"
             android:gravity="center_vertical"
         />
